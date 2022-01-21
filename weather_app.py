@@ -3,7 +3,7 @@ from geopy.geocoders import Nominatim
 from weather import weather
 
 app = Flask(__name__)
-app.config.from_pyfile('../config/config.cfg')
+app.config.from_pyfile('config/config.cfg')
 #
 # w = weather(app.config)
 w = weather(app.config)
