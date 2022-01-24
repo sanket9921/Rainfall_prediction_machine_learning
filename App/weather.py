@@ -39,7 +39,7 @@ class weather:
         self.weather_icon = []
 
     def __load_model(self):
-        self.__model = joblib.load(open('App/model/Rainfall_best_model13.pkl','rb'))
+        self.__model = joblib.load(open('App/RF-model/Rainfall_best_model13.pkl','rb'))
         self.__loc = Nominatim(user_agent="GetLoc")
 
     def __initialise(self):
