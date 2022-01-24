@@ -24,12 +24,14 @@
             <h1>Welcome</h1>
         </div>
         <div class="form">
-          <form class="resister-form">
+          <form class="resister-form" method="post">
+            <label>Name</label>
+            <input type="text" name="uname" placeholder="Enter your name">
             <label>Email</label>
-            <input type="email" placeholder="Enter Email"/>
+            <input type="email" name="mail" placeholder="Enter Email"/>
             <label>password</label>
-            <input type="password" placeholder="Enter password"/>
-            <button>Submit</button>
+            <input type="password" name="passw" placeholder="Enter password"/>
+            <button type="submit">Submit</button>
             <p class="message">Already registered? <a href="/login">click here</a></p>
           </form>
         </div>
