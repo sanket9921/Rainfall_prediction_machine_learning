@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-import bcrypt
 from flask_sqlalchemy import SQLAlchemy
-from weather import weather
+from App.weather import weather
 
 app = Flask(__name__)
 app.config.from_pyfile('config/config.cfg')
