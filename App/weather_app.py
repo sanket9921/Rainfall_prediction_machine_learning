@@ -65,7 +65,7 @@ def register():
         db.session.add(register)
         db.session.commit()
         return redirect(url_for("login"))
-    return  render_template('register.html')
+    return  render_template('signup.html')
 
 @app.route('/location')
 def location():

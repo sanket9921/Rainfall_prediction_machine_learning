@@ -24,14 +24,44 @@
             <h1>Welcome</h1>
         </div>
         <div class="form">
-            <div class="error" style="color: red;">Invalid Email and Password</div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+      <div class="column is-half notification is-{{ category }}" style="opacity: .9;color: red;"><strong>{{ message }}</strong></div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
           <form method="post" class="login-form">
-            <label>Email</label>
-            <input type="email" placeholder="Enter Email" name="mail"/>
-            <label>password</label>
-            <input type="password" placeholder="Enter password" name="passw"/>
-            <button>login</button>
-            <p class="message">Not registered? <a href="/register">Create an account</a></p>
+            <div class="field">
+                {{ form.email.label(class="label") }}
+                {% if form.email.errors %}
+                        {{ form.email(class="input is-danger") }}
+                        <div class="help is-danger">
+                                {% for error in form.email.errors %}
+                                        {{ error }}
+                                {% endfor %}
+                        </div>
+                {% else %}
+                        {{ form.email(class="input", placeholder="Enter your Email") }}
+                {% endif %}   
+        </div>
+        <div class="field">
+                {{ form.password.label(class="label") }}
+                {% if form.password.errors %}
+                        {{ form.password(class="input is-danger") }}
+                        <div class="help is-danger">
+                                {% for error in form.password.errors %}
+                                        {{ error }}
+                                {% endfor %}
+                        </div>
+                {% else %}
+                        {{ form.password(class="input", placeholder="Enter the password") }}
+                {% endif %}
+        </div>
+        <div class="field">
+                            {{ form.submit(class="button") }}              
+        </div>
+            <p class="message">Not registered? <a href={{url_for('auth_bp.signuppage')}}>Create an account</a></p>
           </form>
         </div>
       </div>
