@@ -30,14 +30,12 @@ def signuppage():
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def loginpage():
     if current_user.is_authenticated:
-        flash("You are already logged in.", "warning")
         return redirect(url_for("main_bp.homepage"))
     form = LoginForm(request.form)
     if request.method == "POST" and form.validate():
         member = User.query.filter_by(email=form.email.data).first()
         if member and pwd.check_password_hash(member.password, form.password.data):
             login_user(member)
-            flash("Welcome, %s!" % form.email.data, "success")
             return redirect(url_for("main_bp.homepage"))
         else:
             flash("Email or Password doesn't match, please try again.", "is-danger")

@@ -100,7 +100,7 @@ def location():
 @app.route("/logout")
 def logoutpage():
     logout_user()
-    flash("your successfully logout")
+    flash("Your successfully logout")
     return redirect(url_for("auth_bp.loginpage"))
 
 
