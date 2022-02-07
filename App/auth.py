@@ -1,7 +1,7 @@
 from flask import Blueprint, flash, redirect, url_for, render_template, request
 from flask_login import current_user, login_user
 from App.forms import LoginForm, RegForm
-from App.models import User
+from App.models import User, location
 from App import pwd, db
 
 auth_bp = Blueprint(
@@ -41,3 +41,8 @@ def loginpage():
             flash("Email or Password doesn't match, please try again.", "is-danger")
             return redirect(url_for("auth_bp.loginpage"))
     return render_template("login.html", form=form)
+
+
+@auth_bp.route('/location', methods=['GET', 'POST'])
+def location():
+    pass

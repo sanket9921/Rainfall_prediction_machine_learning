@@ -2,13 +2,16 @@
 {% block maincontainer %}
 <div class="hero" data-bg-image="images/banner.png">
     <div class="container">
-        <form action="/" method="POST" class="find-location">
-            <input type="text" name = "location" placeholder="Find your location...">
-            <input type="submit" value="Find">
+        <form action="{{url_for('main_bp.add_location')}}" method="POST" class="find-location">
+            <input type="text" name = "location" placeholder="Enter your location...">
+            <input type="submit" value="Add">
         </form>
 
     </div>
 </div>
+
+{% for loc in location %}
+<form action="/" method="post"></form>
 <div class="forecast-table">
     <div class="container">
         <div class="forecast-container">
@@ -20,7 +23,7 @@
                 </div> <!-- .forecast-header -->
 
                 <div class="forecast-content">
-                    <div class="location">{{location}}</div>
+                    <div class="location">{{loc}}</div>
                     <div class="rainfall">
                         <div class="num">Rain: {{pdata[0]}}<small>mm</small></div>
                         <div class="forecast-icon">
@@ -30,17 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="forecast">
-                <div class="forecast-header">
-                    <div class="element">Weather</div>
-                </div>
-                <div class="forecast-content">
-                    <div class="forecast-icon">
-                        <img src="http://openweathermap.org/img/wn/{{weather_icon[0]}}@2x.png" alt="" width=80>
-                    </div>
-                    <div class="degree">{{weather_desc[0]}}</div>
-                </div>
-            </div>
+            
             <div class="forecast">
                 <div class="forecast-header">
                     <div class="element">Temperature</div>
@@ -97,7 +90,17 @@
                     <div class="degree">{{data[0][7]}}%</div>
                 </div>
             </div>
+            <div class="forecast">
+                <div class="forecast-header">
+                    <div class="element">Weather</div>
+                </div>
+                <div class="forecast-content">
+                    <input type="submit" value="{{loc}}" >
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</div><br><br><br><br><br>
+{% endfor %}
+
 {% endblock maincontainer %}

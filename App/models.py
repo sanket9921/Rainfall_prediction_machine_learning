@@ -8,8 +8,8 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-class User(db.Model,UserMixin):
-    sno = db.Column(db.Integer, primary_key=True)
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.DateTime, default=datetime.now)
     uname = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
@@ -17,9 +17,18 @@ class User(db.Model,UserMixin):
 
     def get_id(self):
         try:
-            return self.sno
+            return self.id
         except AttributeError:
             raise NotImplementedError('No `id` attribute - override `get_id`')
 
     def __repr__(self):
         return 'User(%s , %s)' % (self.uname, self.email)
+
+
+class location(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    location = db.Column(db.String(60), nullable=False)
+
+    def __repr__(self):
+        return self.location
