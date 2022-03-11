@@ -5,6 +5,7 @@ body {
     font-family: "Roboto", sans-serif;}
 a{
       text-decoration: none; }
+  
 label{
       float: left;
       padding: 10px;}
@@ -29,11 +30,11 @@ label{
         color: black; }
     
 .welcome{
-    margin: 0 40%;
+    margin: 0 50%;
     padding-bottom: 10px;
 }
 .login-page {
-  width: 500px;
+  width: 50%;
   padding: 3% 0 0;
   margin: auto;
 }
@@ -41,7 +42,7 @@ label{
   position: relative;
   z-index: 1;
   background: rgba(0,0,0,0.1);
-  max-width: 360px;
+  width: 100%;
   margin: 0 auto 100px;
   padding: 50px;
   border-radius: 10px;
@@ -61,7 +62,7 @@ label{
   font-size: 14px;
   border-radius: 40px;
 }
-.form button {
+.form .button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -75,6 +76,12 @@ label{
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+}
+@media screen and (max-width:361px){
+  .form{
+    width: 100%;
+    color: black;
+  }
 }
 
 /* .form .message {

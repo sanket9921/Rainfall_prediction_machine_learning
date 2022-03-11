@@ -1,0 +1,106 @@
+{% extends 'main_layout.html' %}
+{% block maincontainer %}
+<div class="hero" data-bg-image="images/banner.png">
+    <div class="container">
+        <form action="{{url_for('main_bp.add_location')}}" method="POST" class="find-location">
+            <input type="text" name = "location" placeholder="Enter your location...">
+            <input type="submit" value="Add">
+        </form>
+
+    </div>
+</div>
+
+{% for loc in location %}
+<form action="/" method="post"></form>
+<div class="forecast-table">
+    <div class="container">
+        <div class="forecast-container">
+            <div class="today forecast">
+                <div class="forecast-header">
+                    <div class="day">{{week[0]}}</div>
+                    <div class="date">{{day[0]}}</div>
+                    <div class="rain-prediction">Rain Prediction</div>
+                </div> <!-- .forecast-header -->
+
+                <div class="forecast-content">
+                    <div class="location">{{loc}}</div>
+                    <div class="rainfall">
+                        <div class="num">Rain: {{pdata[0]}}<small>mm</small></div>
+                        <div class="forecast-icon">
+                            <img src="static/images/icons/{{rain_desc[0]}}.png" alt="" width=150>
+                        </div>
+                        <div class="rate-rainfall">{{rain_desc[0]}}</div>	
+                    </div>
+                </div>
+            </div>
+            
+            <div class="forecast">
+                <div class="forecast-header">
+                    <div class="element">Temperature</div>
+                </div> <!-- .forecast-header -->
+                <div class="forecast-content">
+                    <div class="forecast-icon">
+                        <img src="static/images/icons/{{temp_desc[0]}}.png" alt="" width=48>
+                    </div>
+                    <div class="degree">{{data[0][1]}} <sup>o</sup>C</div>
+                    <small>{{data[0][0]}} <sup>o</sup>C</small>
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="forecast-header">
+                    <div class="element">Wind</div>
+                </div> <!-- .forecast-header -->
+                <div class="forecast-content">
+                    <div class="forecast-icon">
+                        <img src="static/images/icons/{{wind_desc[0]}}.png" alt="" width=48>
+                    </div>
+                    <div class="degree">{{data[0][4]}}<small>m/s</small></div>
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="forecast-header">
+                    <div class="element"> humidity</div>
+                </div> <!-- .forecast-header -->
+                <div class="forecast-content">
+                    <div class="forecast-icon">
+                        <img src="static/images/icons/{{humidity_desc[0]}}.png" alt="" width=48>
+                    </div>
+                    <div class="degree">{{data[0][5]}}%</div>
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="forecast-header">
+                    <div class="element">pressure</div>
+                </div> <!-- .forecast-header -->
+                <div class="forecast-content">
+                    <div class="forecast-icon">
+                        <img src="static/images/icons/{{pressure_desc[0]}}.png" alt="" width=48>
+                    </div>
+                    <div class="degree">{{data[0][6]}}<small>mbr</small></div>
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="forecast-header">
+                    <div class="element">clouds</div>
+                </div> <!-- .forecast-header -->
+                <div class="forecast-content">
+                    <div class="forecast-icon">
+                        <img src="static/images/icons/{{clouds_desc[0]}}.png" alt="" width=48>
+                    </div>
+                    <div class="degree">{{data[0][7]}}%</div>
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="forecast-header">
+                    <div class="element">Weather</div>
+                </div>
+                <div class="forecast-content">
+                    <input type="submit" value="{{loc}}" >
+                </div>
+            </div>
+        </div>
+    </div>
+</div><br><br><br><br><br>
+{% endfor %}
+
+{% endblock maincontainer %}

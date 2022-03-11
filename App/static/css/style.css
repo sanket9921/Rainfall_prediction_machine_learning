@@ -295,9 +295,15 @@ form textarea {
 /*
  * Header Styles
  */
+.navbar{
+  background-color: rgba(0, 0, 0, 0.1);
+  color: black;
+}
+.navbar .navbar-nav{
+  text-align: center;
+}
 
-
-.site-header {
+/* .site-header {
   padding: 50px 0; 
   background-color: rgba(0, 0, 0, 0.1);}
   .site-header .branding {
@@ -386,7 +392,7 @@ form textarea {
       .mobile-navigation .menu .menu-item:last-child {
         border-bottom: none; }
       .mobile-navigation .menu .menu-item.current-menu-item a {
-        color: black; }
+        color: black; } */
 
 .hero {
   background-size: cover;
@@ -425,7 +431,7 @@ form textarea {
     @media screen and (max-width: 990px) {
       .forecast-container .forecast {
         display: block;
-        width: 16.6667%;
+        width: 20%;
         float: left; } }
     .forecast-container .forecast.today {
       width: 420px; }
@@ -442,9 +448,6 @@ form textarea {
         .forecast-container .forecast.today .forecast-header .date {
           padding-left: 10px;
           float: left; }
-        .forecast-container .forecast.today .forecast-header .rain-prediction{
-          padding-right: 100px;
-        }
       .forecast-container .forecast.today .forecast-content {
         text-align: left;
         padding-top: 30px;
@@ -454,7 +457,12 @@ form textarea {
         font-weight: 700; }
       .forecast-container .forecast.today .rainfall .num, .forecast-container .forecast.today .rainfall .forecast-icon {
         display: inline-block;
-        vertical-align: middle; }
+        vertical-align: middle;
+       }
+       .forecast-container .forecast.today .rainfall .forecast-icon {
+         float: right;
+        padding-bottom: 100px;
+        padding-right: 30px;}
       .forecast-container .forecast.today .rainfall .num {
         font-size: 25px;
         margin-right: 30px; }
@@ -472,11 +480,13 @@ form textarea {
       padding: 10px;
       text-align: center;
       font-weight: 400; }
+      
     .forecast-container .forecast .forecast-icon {
       height: 50px; }
     .forecast-container .forecast .forecast-content {
       padding: 50px 20px 10px;
-      text-align: center; }
+      text-align: center; 
+    }
       .forecast-container .forecast .forecast-content .forecast-icon {
         margin-bottom: 20px; }
       .forecast-container .forecast .forecast-content .rainfall {
@@ -484,3 +494,15 @@ form textarea {
         font-size: 1.7142857143em;
         color: black;
         font-weight: 500; }
+
+        @media  screen and (max-width: 360px){
+          .forecast-container .forecast .forecast-header{
+          padding: 10px 5px;}
+          .forecast-container .forecast .forecast-content{
+            width: 30;
+            padding: 10px 0;
+          }
+          .forecast-container .forecast-content .location, .forecast-container .forecast-content .rainfall,.forecast-container .forecast-content .rate-rainfall{
+            padding-left:10px;
+          }
+        }

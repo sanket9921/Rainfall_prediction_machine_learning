@@ -3,6 +3,9 @@ import joblib
 from geopy.geocoders import Nominatim
 from datetime import datetime
 
+API_KEY = '84ab8aee3c08e48f02450cc7580714cc'
+API_URL = 'https://api.openweathermap.org/data/2.5/onecall'
+
 
 class WeatherException(Exception):
     def __init__(self, *args):
@@ -13,8 +16,7 @@ class WeatherException(Exception):
 
 
 class weather:
-    def __init__(self, config):
-        self.__config = config
+    def __init__(self):
         self.__model = None
         self.location = None
         self.__loc = None
@@ -39,7 +41,7 @@ class weather:
         self.weather_icon = []
 
     def __load_model(self):
-        self.__model = joblib.load(open('model/Rainfall_best_model13.pkl', 'rb'))
+        self.__model = joblib.load(open('App/RF-model/Rainfall_best_model13.pkl', 'rb'))
         self.__loc = Nominatim(user_agent="GetLoc")
 
     def __initialise(self):
@@ -99,10 +101,10 @@ class weather:
                 'lat': self.latitude,
                 'lon': self.longitude,
                 'units': 'metric',
-                'appid': self.__config['API_KEY']
+                'appid': API_KEY
             }
 
-            response = requests.get(self.__config['API_URL'], params=params)
+            response = requests.get(API_URL, params=params)
             response.raise_for_status()
             self.weather_data = response.json()
         except requests.exceptions.HTTPError:
